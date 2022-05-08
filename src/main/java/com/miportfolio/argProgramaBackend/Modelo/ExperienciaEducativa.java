@@ -2,14 +2,12 @@
 package com.miportfolio.argProgramaBackend.Modelo;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,25 +15,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter @Setter
 @Entity
-public class ExperienciaLaboral implements Serializable {
+public class ExperienciaEducativa implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String institucion;
+    private String titulo;
+    private String credencial;
+    private String linkValidacion;
     
-    private String nombreEmpresa;
-    private String ubicacion;
+    @Autowired
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="credencial_img_id")
+    private Imagen credencialImg;
+    
     private int mesComienzo;
     private int anioComienzo;
     private int mesFin;
     private int anioFin;
     
-    @Autowired
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
-    @JoinColumn(name="experiencia_laboral")
-    private List<ExperienciaPuesto> puestos;
     
-    @Autowired
-    @JoinColumn(name="logo_id")
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
-    private Imagen logoImg;
 }
