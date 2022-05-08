@@ -1,5 +1,5 @@
 
-package com.miportfolio.argProgramaBackend.Controller;
+package com.miportfolio.argProgramaBackend.Modelo;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -9,13 +9,12 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter @Setter
 @Entity
-public class Casa implements Serializable {
+public class ExperienciaLaboral implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String direccion;
     
+    private String nombreEmpresa;
 }

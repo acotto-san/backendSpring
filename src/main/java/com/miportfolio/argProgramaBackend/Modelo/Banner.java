@@ -5,7 +5,6 @@
 package com.miportfolio.argProgramaBackend.Modelo;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,34 +18,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter @Setter
 @Entity
-public class Persona implements Serializable {
+public class Banner implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nombre;
-    private String apellido;
+    private String nombrePersona;
+    private String puestoActual;
+    private String descripcionPersonal;
     
     @Autowired
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
-    @JoinColumn(name="curriculum_id")
-    private Curriculum curriculum;
-//    private Curriculum cv;
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
-//    @JoinColumn(name="persona")
-//    private List<RedSocial> redes;
-
+    @JoinColumn(name="banner_img_id")
+    private Imagen bannerImg;
     
-    
-    public Persona() {
-    }
-
-    public Persona(Long id, String nombre, String apellido
-    ) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-
-    }
-    
-    
+    @Autowired
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
+    @JoinColumn(name="avatar_img_id")
+    private Imagen avatarImg;
 }
