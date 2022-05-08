@@ -5,27 +5,29 @@
 package com.miportfolio.argProgramaBackend.Modelo;
 
 import java.io.Serializable;
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter @Setter
 @Entity
-public class ExperienciaPuesto  implements Serializable {
+public class Proyecto implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
     private String nombre;
-    private int mesComienzo;
-    private int anioComienzo;
-    private int mesFin;
-    private int anioFin;
-    @Column(length = 3000)
     private String descripcion;
+    private String link;
     
+    @Autowired
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="img_id")
+    private Imagen previewImg;
 }

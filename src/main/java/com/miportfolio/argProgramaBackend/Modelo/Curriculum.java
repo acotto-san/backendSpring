@@ -41,4 +41,18 @@ public class Curriculum implements Serializable {
     @JoinColumn(name="curriculum_id")
     private List<ExperienciaEducativa> estudios;
     
+    @Autowired
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
+    @JoinColumn(name="curriculum_id")
+    private List<Skill> skills;
+    
+    @Autowired
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
+    @JoinColumn(name="curriculum_id")
+    private List<Proyecto> proyectos;
+    
+    @Autowired
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
+    @JoinColumn(name="curriculum_id")
+    private List<RedSocial> redes;
 }

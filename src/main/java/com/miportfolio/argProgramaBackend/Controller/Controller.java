@@ -9,6 +9,7 @@ import com.miportfolio.argProgramaBackend.Service.IPersonaService;
 import com.miportfolio.argProgramaBackend.Service.PersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +44,7 @@ public class Controller {
     public void borrarPersona(@PathVariable Long id){
         persoServ.borrarPersona(id);
     }
-    
+    @CrossOrigin
     @GetMapping("/persona/{id}")
     public Persona buscarPersona(@PathVariable Long id){
         return persoServ.buscarPersona(id);
