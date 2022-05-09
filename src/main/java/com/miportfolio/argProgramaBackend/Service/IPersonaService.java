@@ -5,11 +5,11 @@ import com.miportfolio.argProgramaBackend.Modelo.Persona;
 import java.util.List;
 
 public interface IPersonaService {
-    public List<Persona> verPersonas();
+    public List<Persona> findAll();
     
-    public void crearPersona(Persona per);
+    public void save(Persona per);
     
-    public void borrarPersona(Long id);
+    public void deleteById(Long id);
     
-    public Persona buscarPersona(Long id);
+    public Persona findById(Long id);
 }
