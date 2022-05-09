@@ -11,29 +11,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonaService implements IPersonaService{
+public class PersonaService implements IService<Persona>{
 
     @Autowired
     public PersonaRepository persoRepo;
     
     @Override
-    public List<Persona> findAll() {
+    public List<Persona> buscarObjetos() {
       return persoRepo.findAll();
     }
 
     @Override
-    public void save(Persona per) {
-        persoRepo.save(per);
+    public Persona buscarObjetoById(Long id) {
+        return persoRepo.findById(id).orElse(null);
+    }
+    
+    @Override
+    public Persona crearObjeto(Persona per) {
+        return persoRepo.save(per);
+    }
+    
+    @Override
+    public Persona editarObjeto(Persona per){
+        return persoRepo.save(per);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void borrarObjetoById(Long id) {
         persoRepo.deleteById(id);
     }
 
-    @Override
-    public Persona findById(Long id) {
-        return persoRepo.findById(id).orElse(null);
-    }
+    
     
 }

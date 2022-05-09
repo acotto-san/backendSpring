@@ -11,28 +11,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CurriculumService implements ICurriculumService{
+public class CurriculumService implements IService<Curriculum>{
     
     @Autowired
     public CurriculumRepository cvRepo;
     
     @Override
-    public List<Curriculum> findAll(){
+    public List<Curriculum> buscarObjetos(){
         return cvRepo.findAll();
     };
     
     @Override
-    public void save(Curriculum cv){
-        cvRepo.save(cv);
-    };
-    
-    @Override
-    public void deleteById(Long id){
-        cvRepo.deleteById(id);
-    };
-    
-    @Override
-    public Curriculum findById(Long id){
+    public Curriculum buscarObjetoById(Long id){
         return cvRepo.findById(id).orElse(null);
     };
+    
+    @Override
+    public Curriculum crearObjeto(Curriculum cv){
+        return cvRepo.save(cv);
+    };
+    
+    @Override
+    public Curriculum editarObjeto(Curriculum cv){
+        return cvRepo.save(cv);
+    };
+    
+    @Override
+    public void borrarObjetoById(Long id){
+        cvRepo.deleteById(id);
+    };
+ 
 }

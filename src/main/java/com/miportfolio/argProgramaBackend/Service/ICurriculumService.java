@@ -6,12 +6,16 @@ import com.miportfolio.argProgramaBackend.Modelo.Curriculum;
 import java.util.List;
 
 public interface ICurriculumService {
-    public List<Curriculum> findAll();
     
-    public void save(Curriculum cv);
+    public List<Curriculum> buscarCurriculums();
     
-    public void deleteById(Long id);
+    public Curriculum buscarCurriculumById(Long id);
+
+    public Curriculum crearCurriculum(Curriculum cv);
     
-    public Curriculum findById(Long id);
+    public Curriculum editarCurriculum(Curriculum cv);
+    
+    public void borrarCurriculumById(Long id);
+    
     
 }
