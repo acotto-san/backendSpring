@@ -25,6 +25,7 @@ public class PersonaController {
     @Autowired
     private IService<Persona> persoServ;
     
+    
     @GetMapping("/all")
     @ResponseBody
     public ResponseEntity<List<Persona>> buscarPersonas(){
@@ -32,8 +33,9 @@ public class PersonaController {
         return new ResponseEntity<>(todasLasPersonas, HttpStatus.OK);
     }
     
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{id}")
+    @ResponseBody
     public ResponseEntity<Persona> buscarPersonaById(@PathVariable("id") Long id){
         Persona personaEncontrada = persoServ.buscarObjetoById(id);
         return new ResponseEntity<>(personaEncontrada, HttpStatus.OK);
