@@ -2,7 +2,7 @@
 package com.miportfolio.argProgramaBackend.Controller;
 
 import com.miportfolio.argProgramaBackend.Service.IService;
-import com.miportfolio.argProgramaBackend.Modelo.Curriculum;
+import com.miportfolio.argProgramaBackend.Modelo.Skill;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,41 +19,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/curriculums")
-public class CurriculumController {
+@RequestMapping("/skills")
+public class SkillController {
     
     @Autowired
-    private IService<Curriculum> cvServ;
+    private IService<Skill> skillServ;
     
     @GetMapping("/all")
     @ResponseBody
-    public ResponseEntity<List<Curriculum>> buscarCurriculums(){
-        List<Curriculum> todosLosCurriculums = cvServ.buscarObjetos();
-        return new ResponseEntity<>(todosLosCurriculums, HttpStatus.OK);
+    public ResponseEntity<List<Skill>> buscarSkills(){
+        List<Skill> todosLosSkills = skillServ.buscarObjetos();
+        return new ResponseEntity<>(todosLosSkills, HttpStatus.OK);
     }
     
     @CrossOrigin
     @GetMapping("/{id}")
-    public ResponseEntity<Curriculum> buscarCurriculumByID(@PathVariable("id") Long id){
-        Curriculum curriculumEncontrado = cvServ.buscarObjetoById(id);
-        return new ResponseEntity<>(curriculumEncontrado, HttpStatus.OK);
+    public ResponseEntity<Skill> buscarSkillByID(@PathVariable("id") Long id){
+        Skill skillEncontrado = skillServ.buscarObjetoById(id);
+        return new ResponseEntity<>(skillEncontrado, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Curriculum> crearCurriculum(@RequestBody Curriculum cv){
-        Curriculum nuevoCurriculum = cvServ.crearObjeto(cv);
-        return new ResponseEntity<>(nuevoCurriculum, HttpStatus.CREATED);
+    public ResponseEntity<Skill> crearSkill(@RequestBody Skill skill){
+        Skill nuevoSkill = skillServ.crearObjeto(skill);
+        return new ResponseEntity<>(nuevoSkill, HttpStatus.CREATED);
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Curriculum> editarCurriculum(@RequestBody Curriculum cv){
-        Curriculum curriculumEditado = cvServ.editarObjeto(cv);
-        return new ResponseEntity<>(curriculumEditado, HttpStatus.OK);
+    public ResponseEntity<Skill> editarSkill(@RequestBody Skill skill){
+        Skill skillEditado = skillServ.editarObjeto(skill);
+        return new ResponseEntity<>(skillEditado, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> borrarCurriculum(@PathVariable("id") Long id){
-        cvServ.borrarObjetoById(id);
+    public ResponseEntity<?> borrarSkill(@PathVariable("id") Long id){
+        skillServ.borrarObjetoById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

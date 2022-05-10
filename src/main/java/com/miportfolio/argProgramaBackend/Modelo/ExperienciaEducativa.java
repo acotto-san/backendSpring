@@ -19,16 +19,16 @@ public class ExperienciaEducativa implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String institucion;
-    private String titulo;
-    private String credencial;
-    private String linkValidacion;
-    
+   
     @Autowired
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="credencial_img_id")
     private Imagen credencialImg;
-    
+
+    private String institucion;
+    private String titulo;
+    private String credencial;
+    private String linkValidacion;    
     private int mesComienzo;
     private int anioComienzo;
     private int mesFin;

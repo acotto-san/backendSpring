@@ -2,7 +2,7 @@
 package com.miportfolio.argProgramaBackend.Controller;
 
 import com.miportfolio.argProgramaBackend.Service.IService;
-import com.miportfolio.argProgramaBackend.Modelo.Curriculum;
+import com.miportfolio.argProgramaBackend.Modelo.RedSocial;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,41 +19,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/curriculums")
-public class CurriculumController {
+@RequestMapping("/redes-sociales")
+public class RedSocialController {
     
     @Autowired
-    private IService<Curriculum> cvServ;
+    private IService<RedSocial> redSocialServ;
     
     @GetMapping("/all")
     @ResponseBody
-    public ResponseEntity<List<Curriculum>> buscarCurriculums(){
-        List<Curriculum> todosLosCurriculums = cvServ.buscarObjetos();
-        return new ResponseEntity<>(todosLosCurriculums, HttpStatus.OK);
+    public ResponseEntity<List<RedSocial>> buscarRedesSociales(){
+        List<RedSocial> todasLasRedSociales = redSocialServ.buscarObjetos();
+        return new ResponseEntity<>(todasLasRedSociales, HttpStatus.OK);
     }
     
     @CrossOrigin
     @GetMapping("/{id}")
-    public ResponseEntity<Curriculum> buscarCurriculumByID(@PathVariable("id") Long id){
-        Curriculum curriculumEncontrado = cvServ.buscarObjetoById(id);
-        return new ResponseEntity<>(curriculumEncontrado, HttpStatus.OK);
+    public ResponseEntity<RedSocial> buscarRedSocialByID(@PathVariable("id") Long id){
+        RedSocial redSocialEncontrada = redSocialServ.buscarObjetoById(id);
+        return new ResponseEntity<>(redSocialEncontrada, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Curriculum> crearCurriculum(@RequestBody Curriculum cv){
-        Curriculum nuevoCurriculum = cvServ.crearObjeto(cv);
-        return new ResponseEntity<>(nuevoCurriculum, HttpStatus.CREATED);
+    public ResponseEntity<RedSocial> crearRedSocial(@RequestBody RedSocial redSocial){
+        RedSocial nuevaRedSocial = redSocialServ.crearObjeto(redSocial);
+        return new ResponseEntity<>(nuevaRedSocial, HttpStatus.CREATED);
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Curriculum> editarCurriculum(@RequestBody Curriculum cv){
-        Curriculum curriculumEditado = cvServ.editarObjeto(cv);
-        return new ResponseEntity<>(curriculumEditado, HttpStatus.OK);
+    public ResponseEntity<RedSocial> editarRedSocial(@RequestBody RedSocial redSocial){
+        RedSocial redSocialEditada = redSocialServ.editarObjeto(redSocial);
+        return new ResponseEntity<>(redSocialEditada, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> borrarCurriculum(@PathVariable("id") Long id){
-        cvServ.borrarObjetoById(id);
+    public ResponseEntity<?> borrarRedSocial(@PathVariable("id") Long id){
+        redSocialServ.borrarObjetoById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

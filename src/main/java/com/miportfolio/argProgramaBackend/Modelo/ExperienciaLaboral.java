@@ -22,13 +22,6 @@ public class ExperienciaLaboral implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String nombreEmpresa;
-    private String ubicacion;
-    private int mesComienzo;
-    private int anioComienzo;
-    private int mesFin;
-    private int anioFin;
-    
     @Autowired
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
     @JoinColumn(name="experiencia_laboral")
@@ -38,4 +31,11 @@ public class ExperienciaLaboral implements Serializable {
     @JoinColumn(name="logo_id")
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
     private Imagen logoImg;
+    
+    private String nombreEmpresa;
+    private String ubicacion;
+    private int mesComienzo;
+    private int anioComienzo;
+    private int mesFin;
+    private int anioFin;
 }

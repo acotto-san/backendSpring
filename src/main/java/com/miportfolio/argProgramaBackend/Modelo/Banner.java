@@ -22,9 +22,6 @@ public class Banner implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nombrePersona;
-    private String puestoActual;
-    private String descripcionPersonal;
     
     @Autowired
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
@@ -35,4 +32,8 @@ public class Banner implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
     @JoinColumn(name="avatar_img_id")
     private Imagen avatarImg;
+    
+    private String nombrePersona;
+    private String puestoActual;
+    private String descripcionPersonal;
 }

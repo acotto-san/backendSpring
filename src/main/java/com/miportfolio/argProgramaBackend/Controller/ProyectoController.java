@@ -2,7 +2,7 @@
 package com.miportfolio.argProgramaBackend.Controller;
 
 import com.miportfolio.argProgramaBackend.Service.IService;
-import com.miportfolio.argProgramaBackend.Modelo.Curriculum;
+import com.miportfolio.argProgramaBackend.Modelo.Proyecto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,41 +19,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/curriculums")
-public class CurriculumController {
+@RequestMapping("/proyectos")
+public class ProyectoController {
     
     @Autowired
-    private IService<Curriculum> cvServ;
+    private IService<Proyecto> proyectoServ;
     
     @GetMapping("/all")
     @ResponseBody
-    public ResponseEntity<List<Curriculum>> buscarCurriculums(){
-        List<Curriculum> todosLosCurriculums = cvServ.buscarObjetos();
-        return new ResponseEntity<>(todosLosCurriculums, HttpStatus.OK);
+    public ResponseEntity<List<Proyecto>> buscarProyectos(){
+        List<Proyecto> todosLosProyectos = proyectoServ.buscarObjetos();
+        return new ResponseEntity<>(todosLosProyectos, HttpStatus.OK);
     }
     
     @CrossOrigin
     @GetMapping("/{id}")
-    public ResponseEntity<Curriculum> buscarCurriculumByID(@PathVariable("id") Long id){
-        Curriculum curriculumEncontrado = cvServ.buscarObjetoById(id);
-        return new ResponseEntity<>(curriculumEncontrado, HttpStatus.OK);
+    public ResponseEntity<Proyecto> buscarProyectoByID(@PathVariable("id") Long id){
+        Proyecto proyectoEncontrado = proyectoServ.buscarObjetoById(id);
+        return new ResponseEntity<>(proyectoEncontrado, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Curriculum> crearCurriculum(@RequestBody Curriculum cv){
-        Curriculum nuevoCurriculum = cvServ.crearObjeto(cv);
-        return new ResponseEntity<>(nuevoCurriculum, HttpStatus.CREATED);
+    public ResponseEntity<Proyecto> crearProyecto(@RequestBody Proyecto proyecto){
+        Proyecto nuevoProyecto = proyectoServ.crearObjeto(proyecto);
+        return new ResponseEntity<>(nuevoProyecto, HttpStatus.CREATED);
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Curriculum> editarCurriculum(@RequestBody Curriculum cv){
-        Curriculum curriculumEditado = cvServ.editarObjeto(cv);
-        return new ResponseEntity<>(curriculumEditado, HttpStatus.OK);
+    public ResponseEntity<Proyecto> editarProyecto(@RequestBody Proyecto proyecto){
+        Proyecto proyectoEditado = proyectoServ.editarObjeto(proyecto);
+        return new ResponseEntity<>(proyectoEditado, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> borrarCurriculum(@PathVariable("id") Long id){
-        cvServ.borrarObjetoById(id);
+    public ResponseEntity<?> borrarProyecto(@PathVariable("id") Long id){
+        proyectoServ.borrarObjetoById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

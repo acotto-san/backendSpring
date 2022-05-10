@@ -2,7 +2,7 @@
 package com.miportfolio.argProgramaBackend.Controller;
 
 import com.miportfolio.argProgramaBackend.Service.IService;
-import com.miportfolio.argProgramaBackend.Modelo.Curriculum;
+import com.miportfolio.argProgramaBackend.Modelo.Banner;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,41 +19,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/curriculums")
-public class CurriculumController {
+@RequestMapping("/banners")
+public class BannerController {
     
     @Autowired
-    private IService<Curriculum> cvServ;
+    private IService<Banner> bannerServ;
     
     @GetMapping("/all")
     @ResponseBody
-    public ResponseEntity<List<Curriculum>> buscarCurriculums(){
-        List<Curriculum> todosLosCurriculums = cvServ.buscarObjetos();
-        return new ResponseEntity<>(todosLosCurriculums, HttpStatus.OK);
+    public ResponseEntity<List<Banner>> buscarBanner(){
+        List<Banner> todosLosBanners = bannerServ.buscarObjetos();
+        return new ResponseEntity<>(todosLosBanners, HttpStatus.OK);
     }
     
     @CrossOrigin
     @GetMapping("/{id}")
-    public ResponseEntity<Curriculum> buscarCurriculumByID(@PathVariable("id") Long id){
-        Curriculum curriculumEncontrado = cvServ.buscarObjetoById(id);
-        return new ResponseEntity<>(curriculumEncontrado, HttpStatus.OK);
+    public ResponseEntity<Banner> buscarBannerByID(@PathVariable("id") Long id){
+        Banner bannerEncontrado = bannerServ.buscarObjetoById(id);
+        return new ResponseEntity<>(bannerEncontrado, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Curriculum> crearCurriculum(@RequestBody Curriculum cv){
-        Curriculum nuevoCurriculum = cvServ.crearObjeto(cv);
-        return new ResponseEntity<>(nuevoCurriculum, HttpStatus.CREATED);
+    public ResponseEntity<Banner> crearBanner(@RequestBody Banner banner){
+        Banner nuevoBanner = bannerServ.crearObjeto(banner);
+        return new ResponseEntity<>(nuevoBanner, HttpStatus.CREATED);
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Curriculum> editarCurriculum(@RequestBody Curriculum cv){
-        Curriculum curriculumEditado = cvServ.editarObjeto(cv);
-        return new ResponseEntity<>(curriculumEditado, HttpStatus.OK);
+    public ResponseEntity<Banner> editarBanner(@RequestBody Banner banner){
+        Banner bannerEditado = bannerServ.editarObjeto(banner);
+        return new ResponseEntity<>(bannerEditado, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> borrarCurriculum(@PathVariable("id") Long id){
-        cvServ.borrarObjetoById(id);
+    public ResponseEntity<?> borrarBanner(@PathVariable("id") Long id){
+        bannerServ.borrarObjetoById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

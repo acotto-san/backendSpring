@@ -25,16 +25,11 @@ public class Persona implements Serializable {
     private Long id;
     private String nombre;
     private String apellido;
-    
     @Autowired
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
     @JoinColumn(name="curriculum_id")
-    private Curriculum curriculum;
-//    private Curriculum cv;
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
-//    @JoinColumn(name="persona")
-//    private List<RedSocial> redes;
-
+    private Curriculum curriculum;  
+    
     
     
     public Persona() {
