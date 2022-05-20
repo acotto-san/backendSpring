@@ -6,6 +6,7 @@ package com.miportfolio.argProgramaBackend.Modelo;
 
 import java.io.Serializable;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,5 +36,6 @@ public class Banner implements Serializable {
     
     private String nombrePersona;
     private String puestoActual;
+    @Column(length = 2500)
     private String descripcionPersonal;
 }

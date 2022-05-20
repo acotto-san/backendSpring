@@ -45,12 +45,13 @@ public class ExperienciaPuestoController {
         return new ResponseEntity<>(nuevaExperienciaPuesto, HttpStatus.CREATED);
     }
     
+    @CrossOrigin
     @PutMapping("/update")
     public ResponseEntity<ExperienciaPuesto> editarExperienciaPuesto(@RequestBody ExperienciaPuesto expPuesto){
         ExperienciaPuesto experienciaPuestoEditada = expPuestoServ.editarObjeto(expPuesto);
         return new ResponseEntity<>(experienciaPuestoEditada, HttpStatus.OK);
     }
-    
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<?> borrarExperienciaPuesto(@PathVariable("id") Long id){
         expPuestoServ.borrarObjetoById(id);

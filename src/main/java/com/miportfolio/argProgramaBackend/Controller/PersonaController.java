@@ -24,7 +24,7 @@ public class PersonaController {
     
     @Autowired
     private IService<Persona> persoServ;
-    
+    String[] crossURLs = {"http://localhost:4200","http://localhost:53277"};
     
     @GetMapping("/all")
     @ResponseBody
@@ -33,7 +33,7 @@ public class PersonaController {
         return new ResponseEntity<>(todasLasPersonas, HttpStatus.OK);
     }
     
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     @GetMapping("/{id}")
     @ResponseBody
     public ResponseEntity<Persona> buscarPersonaById(@PathVariable("id") Long id){

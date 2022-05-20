@@ -34,8 +34,5 @@ public class ExperienciaLaboral implements Serializable {
     
     private String nombreEmpresa;
     private String ubicacion;
-    private int mesComienzo;
-    private int anioComienzo;
-    private int mesFin;
-    private int anioFin;
+    private String tipoJornada;
 }

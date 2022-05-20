@@ -25,6 +25,7 @@ public class ExperienciaLaboralController {
     @Autowired
     private IService<ExperienciaLaboral> expLaboralServ;
     
+    @CrossOrigin
     @GetMapping("/all")
     @ResponseBody
     public ResponseEntity<List<ExperienciaLaboral>> buscarExperienciasLaborales(){
@@ -45,12 +46,14 @@ public class ExperienciaLaboralController {
         return new ResponseEntity<>(nuevaExperienciaLaboral, HttpStatus.CREATED);
     }
     
+    @CrossOrigin
     @PutMapping("/update")
     public ResponseEntity<ExperienciaLaboral> editarExperienciaLaboral(@RequestBody ExperienciaLaboral expLaboral){
         ExperienciaLaboral curriculumEditado = expLaboralServ.editarObjeto(expLaboral);
         return new ResponseEntity<>(curriculumEditado, HttpStatus.OK);
     }
     
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<?> borrarExperienciaLaboral(@PathVariable("id") Long id){
         expLaboralServ.borrarObjetoById(id);

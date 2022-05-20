@@ -21,10 +21,8 @@ public class ExperienciaPuesto  implements Serializable {
     private Long id;
     
     private String nombre;
-    private int mesComienzo;
-    private int anioComienzo;
-    private int mesFin;
-    private int anioFin;
+    private String fechaInicio;
+    private String fechaFin;
     @Column(length = 3000)
     private String descripcion;
     

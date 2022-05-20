@@ -29,8 +29,6 @@ public class ExperienciaEducativa implements Serializable{
     private String titulo;
     private String credencial;
     private String linkValidacion;    
-    private int mesComienzo;
-    private int anioComienzo;
-    private int mesFin;
-    private int anioFin;
+    private String fechaInicio;
+    private String fechaFin;
 }

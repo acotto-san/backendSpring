@@ -44,7 +44,7 @@ public class CurriculumController {
         Curriculum nuevoCurriculum = cvServ.crearObjeto(cv);
         return new ResponseEntity<>(nuevoCurriculum, HttpStatus.CREATED);
     }
-    
+    @CrossOrigin
     @PutMapping("/update")
     public ResponseEntity<Curriculum> editarCurriculum(@RequestBody Curriculum cv){
         Curriculum curriculumEditado = cvServ.editarObjeto(cv);
