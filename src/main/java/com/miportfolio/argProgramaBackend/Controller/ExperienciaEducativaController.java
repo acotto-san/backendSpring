@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/exp-educativas")
 public class ExperienciaEducativaController {
     
@@ -31,8 +32,7 @@ public class ExperienciaEducativaController {
         List<ExperienciaEducativa> todasLasExperienciaEducativas = expEducativaRepo.buscarObjetos();
         return new ResponseEntity<>(todasLasExperienciaEducativas, HttpStatus.OK);
     }
-    
-    @CrossOrigin
+
     @GetMapping("/{id}")
     public ResponseEntity<ExperienciaEducativa> buscarExperienciaEducativaByID(@PathVariable("id") Long id){
         ExperienciaEducativa ExperienciaEducativaEncontrado = expEducativaRepo.buscarObjetoById(id);
